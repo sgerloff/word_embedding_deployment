@@ -39,6 +39,6 @@ if __name__ == "__main__":
     word2vec.save(args.save + ".model")
     word2vec.wv.save(args.save + ".wv")
 
-    print(f"Words most similar to {'advice'}:")
+    print(f"\nWords most similar to {'advice'}:\n")
     for word, similarity in word2vec.wv.most_similar('advice'):
         print(f"{word}: {similarity}")
