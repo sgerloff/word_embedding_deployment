@@ -3,3 +3,4 @@ gensim
 matplotlib
 numpy
 tensorflow
+flask
