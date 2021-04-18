@@ -1,0 +1,5 @@
+pandas
+gensim
+matplotlib
+numpy
+tensorflow
