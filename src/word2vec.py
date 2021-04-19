@@ -11,7 +11,7 @@ def get_word2vec(path_to_sentences, **kwargs):
     return model
 
 
-def save_sentences(path_to_csv, save="../data/processed_sentences.txt"):
+def save_sentences(path_to_csv, save="/tmp/sentences"):
     processed_data = get_processed_data_from_csv(path_to_csv)
     sentence_list = processed_data["OriginalTweet"].to_list()
     with codecs.open(save, "w", "utf-8-sig") as file:
@@ -24,8 +24,6 @@ if __name__ == "__main__":
                         help='Path to csv containing original tweets.')
     parser.add_argument('--save', type=str, default="../data/word2vec",
                         help='Base name for saved model and word vectors.')
-    # parser.add_argument('--sentences', type=str, default="../data/processed_sentences.txt",
-                        # help="Path to processed sentences.")
 
     args = parser.parse_args()
 
