@@ -51,7 +51,7 @@ if __name__ == "__main__":
                         default="src.word_embedding_model_factory.GlobalPoolingWordEmbeddingModelFactory",
                         help="Module of model factory")
     parser.add_argument('--epochs', type=int, default=20, help="Number of epochs to train")
-    parser.add_argument('--final', type=bool, default=False, help="Toggle for final run -> No test train split.")
+    parser.add_argument('--final', type=str, default="False", help="Toggle for final run -> No test train split.")
 
     args = parser.parse_args()
 
@@ -64,7 +64,7 @@ if __name__ == "__main__":
 
 
     #Define training data and callbacks:
-    if args.final:
+    if eval(args.final):
         train_ds = tf.data.Dataset.from_tensor_slices((processed_data["OriginalTweet"], processed_data["Label"]))
         train_ds = train_ds.batch(64).shuffle(10000)
         test_ds=None

@@ -3,6 +3,8 @@ from flask import Flask, jsonify, request
 import gensim, json, os
 import tensorflow as tf
 from src.data_preprocessing import Preprocessor
+from src.spell_correction import SpellChecker
+
 
 app = Flask(__name__)
 
@@ -42,13 +44,15 @@ def similar():
 
     if model in word_vector_dict:
         word_vector = word_vector_dict[model]
+        word = preprocessor(word)
+        if word in word_vector.key_to_index:
+            return jsonify(word_vector.most_similar(word))
+        else:
+            spell = SpellChecker(list(word_vector.key_to_index.keys()))
+            most_similar = spell.get_most_similar_words(word, n=3)
+            return jsonify({"ERROR": f"word '{word}' is not known! Did you mean: {most_similar}?"})
     else:
-        word_vector = word_vector_dict["word2vec"]
-
-    if word in word_vector.key_to_index:
-        return jsonify(word_vector.most_similar(word))
-    else:
-        return jsonify({"ERROR": f"{word} is not known!"})
+        return jsonify({"ERROR": f"model '{model}' is not known!"})
 
 
 @app.route('/sentiment', methods=["POST"])

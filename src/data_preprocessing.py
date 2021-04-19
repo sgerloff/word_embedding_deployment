@@ -48,7 +48,6 @@ class Preprocessor:
         return text.encode("utf-8")
 
 
-
 def get_processed_data_from_csv(path_to_csv):
     raw_data = pd.read_csv(path_to_csv)
     preprocess = Preprocessor()
