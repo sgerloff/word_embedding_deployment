@@ -41,6 +41,13 @@ class Preprocessor:
         text = self.clean_text(text)
         return text
 
+    def transform_bytes(self, text):
+        print(text, type(text))
+        text = text.numpy().decode("utf-8")
+        text = self(text)
+        return text.encode("utf-8")
+
+
 
 def get_processed_data_from_csv(path_to_csv):
     raw_data = pd.read_csv(path_to_csv)
