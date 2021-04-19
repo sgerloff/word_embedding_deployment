@@ -1,7 +1,7 @@
 pandas
-gensim
+gensim==4.0.1
 matplotlib
 numpy
-tensorflow
+tensorflow==2.4.1
 flask
 requests

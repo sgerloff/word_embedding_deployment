@@ -24,19 +24,17 @@ if __name__ == "__main__":
                         help='Path to csv containing original tweets.')
     parser.add_argument('--save', type=str, default="../data/word2vec",
                         help='Base name for saved model and word vectors.')
-    parser.add_argument('--sentences', type=str, default="../data/processed_sentences.txt",
-                        help="Path to processed sentences.")
+    # parser.add_argument('--sentences', type=str, default="../data/processed_sentences.txt",
+                        # help="Path to processed sentences.")
 
     args = parser.parse_args()
 
-    save_sentences(args.csv, save=args.sentences)
-    word2vec = get_word2vec(args.sentences,
+    save_sentences(args.csv, save="/tmp/sentences")
+    word2vec = get_word2vec("/tmp/sentences",
                             vector_size=100,
-                            window=5,
-                            min_count=1,
-                            workers=4
+                            window=5
                             )
-    word2vec.save(args.save + ".model")
+
     word2vec.wv.save(args.save + ".wv")
 
     print(f"\nWords most similar to {'advice'}:\n")

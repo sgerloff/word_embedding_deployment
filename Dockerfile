@@ -1,8 +1,8 @@
-FROM python:3.8
-RUN useradd -ms /bin/bash admin
-USER admin
-WORKDIR /app
-COPY app /app
+#FROM python:3.8
+FROM tensorflow/tensorflow:2.4.1
+WORKDIR /
+COPY src /src
+COPY data /data
+COPY requirements.txt /
 RUN pip install -r requirements.txt
-CMD ["ls"]
-CMD ["python", "server.py"]
+CMD ["python", "-m", "src.server"]
