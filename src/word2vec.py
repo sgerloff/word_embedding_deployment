@@ -29,7 +29,7 @@ if __name__ == "__main__":
 
     save_sentences(args.csv, save="/tmp/sentences")
     word2vec = get_word2vec("/tmp/sentences",
-                            size=100,
+                            vector_size=100,
                             window=5
                             )
 
