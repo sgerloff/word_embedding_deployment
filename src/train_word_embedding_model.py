@@ -37,7 +37,7 @@ def get_word_vectors(model):
     embeddings = model.get_layer("embedding").get_weights()[0]
     word_vectors = gensim.models.KeyedVectors(embeddings.shape[1])
 
-    word_vectors.add(vocabulary, embeddings)
+    word_vectors.add_vectors(vocabulary, embeddings)
     return word_vectors
 
 
