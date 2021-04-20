@@ -103,3 +103,11 @@ python -m src.flask_server_interface --data="data"
 
 If you misspell a word the webserver performs a spell check and returns the most similar words that are in the vocabulary for the word vectors.
 Try them out and use them in your next query.
+
+# Future TODOs
+
+I would like to use this opportunity to familiarize myself futher with typical NLP approaches.
+One such approach is to use pretrained word embeddings and fine tune them to the task at hand.
+To this end, I would like to use GloVe and BERT word vectors.
+
+Another aspect, would be the publication of the webserver using for example AWS Ec2 instances.
